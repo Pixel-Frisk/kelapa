@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -21,8 +23,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function dashboard()
     {
-        return view('home');
+      $users = DB::table('users as u')
+                  ->join('transactions  as t', 'u.id', '=', 't.id_sopir')
+                  ->join('users as us', 't.id_pb', '=', 'us.id')
+                  ->select('u.name', 'us.alamat', 't.created_at', 't.updated_at')
+                  ->get();
+      return view('dashboard', ['users' => $users]);
+    }
+
+    public function profile($id){
+      $user = User::find($id);
+      return view('profile', ['users' => $user]);
     }
 }

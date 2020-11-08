@@ -1,20 +1,32 @@
 <?php
 
 namespace App\Http\Controllers;
-use Auth;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Auth;
+use App\User;
 
 class AuthController extends Controller
 {
-    public function login(){
-      return view('login');
-    }
+  public function login_t(){
+    return view('login_t');
+  }
 
-    public function postLogin(Request $request){
-      if(Auth::attemp($request->only('email','password'))){
-        return redirect('/pedagang');
+  public function postLogin(Request $request){
+    if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password])){
+      if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password, 'statusAcc'=>'on'])){
+        return redirect('/dashboard');
+      } else {
+        return redirect('/')->with('status', 'User sudah tidak Aktif');
       }
-      return redirect('/login');
+    } else {
+      return redirect('/')->with('status', 'Username/Password salah');
     }
+  }
+
+  public function logout(){
+    Auth::logout();
+    return redirect('/');
+  }
 }
