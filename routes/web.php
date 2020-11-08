@@ -11,20 +11,32 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'AuthController@login_t')->name('login');
+Route::post('/postLogin', 'AuthController@postLogin');
+Route::get('/logout', 'AuthController@logout');
+
+Route::group(['middleware' => ['auth','CheckStatus:admin']],function(){
+  Route::get('/pedagang', 'UserController@getDataPB');
+  Route::post('/users/createPB', 'UserController@createPB');
+  Route::get('/users/{id}/edit', 'UserController@edit');
+  Route::post('/users/{id}/update', 'UserController@update');
+  // Route::get('/users/{id}/delete', 'UserController@delete');
+  Route::get('/sopir', 'UserController@getDataSopir');
+  Route::post('/users/createSopir', 'UserController@createSopir');
 });
 
-Route::get('/login', 'AuthController@login');
-Route::post('/postLogin', 'AuthController@postLogin');
+Route::group(['middleware' => ['auth','CheckStatus:admin,pedagang,sopir']],function(){
+  Route::get('/profile/{id}', 'HomeController@profile');
+  Route::get('/dashboard', 'HomeController@dashboard');
+});
 
-Route::get('/pedagang', 'UserController@pedagang');
-Route::post('/users/createPB', 'UserController@createPB');
-Route::get('/users/{id}/editPB', 'UserController@editPB');
-Route::post('/users/{id}/updatePB', 'UserController@updatePB');
-Route::get('/users/{id}/delete', 'UserController@delete');
-Route::get('/sopir', 'UserController@sopir');
+Route::group(['middleware' => ['auth','CheckStatus:pedagang']],function(){
+  Route::get('/sop/{id}', 'PBController@sopir');
+});
 
+Route::group(['middleware' => ['auth','CheckStatus:sopir']],function(){
+  Route::get('/ped/{id}', 'SopirController@pedagang');
+});
 //Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
