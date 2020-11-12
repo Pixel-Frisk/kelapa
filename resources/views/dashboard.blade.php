@@ -4,6 +4,7 @@
 <title>Dashboard</title>
 @endsection
 
+@if(auth()->user()->status == 'admin')
 @section('content')
 <div class="main-content">
   <section class="section">
@@ -46,3 +47,108 @@
   </section>
 </div>
 @endsection
+@endif
+
+@if(auth()->user()->status == 'pedagang')
+@section('content')
+<div class="clearfix"></div>
+<section class="slide-banner scroll-con-sec hero-section" data-scrollax-parent="true" id="sec1">
+    <div class="slideshow-container">
+        <div class="slideshow-item">
+            <div class="bg" data-bg="{{asset('others/assets/img/kelapa.jpg')}}"></div>
+        </div>
+    </div>
+    <div class="overlay"></div>
+    <div class="hero-section-wrap fl-wrap">
+        <div class="container">
+            <div class="intro-item fl-wrap">
+                <div class="caption text-center cl-white">
+                    <h2>Selamat Datang</h2>
+                    <br>
+                    <p><font size="6">{{auth()->user()->name}}</font></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="clearfix"></div>
+<section class="first-feature">
+    <div class="container">
+        <div class="all-features">
+          <a href="/profile/{{auth()->user()->id}}">
+              <div class="col-md-6 col-sm-6 small-padding">
+                  <div class="job-feature">
+                      <div class="feature-caption">
+                          <h5>Akun</h5>
+                          <p>Melihat Akun Anda</p>
+                      </div>
+                  </div>
+              </div>
+            </a>
+            <a href="/sop/{{auth()->user()->id}}">
+              <div class="col-md-6 col-sm-6 small-padding">
+                  <div class="job-feature">
+                      <div class="feature-caption">
+                          <h5>Sopir</h5>
+                          <p>Detail Akun Sopir</p>
+                      </div>
+                  </div>
+              </div>
+          </a>
+        </div>
+    </div>
+</section>
+@endsection
+@endif
+
+@if(auth()->user()->status == 'sopir')
+@section('content')
+<div class="clearfix"></div>
+<section class="slide-banner scroll-con-sec hero-section" data-scrollax-parent="true" id="sec1">
+    <div class="slideshow-container">
+        <div class="slideshow-item">
+            <div class="bg" data-bg="{{asset('others/assets/img/kelapa.jpg')}}"></div>
+        </div>
+    </div>
+    <div class="overlay"></div>
+    <div class="hero-section-wrap fl-wrap">
+        <div class="container">
+            <div class="intro-item fl-wrap">
+                <div class="caption text-center cl-white">
+                    <h2>Selamat Datang</h2>
+                    <br>
+                    <p><font size="6">Nama</font></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="clearfix"></div>
+<section class="first-feature">
+    <div class="container">
+        <div class="all-features">
+          <a href="/profile/{{auth()->user()->id}}">
+              <div class="col-md-6 col-sm-6 small-padding">
+                  <div class="job-feature">
+                      <div class="feature-caption">
+                          <h5>Akun</h5>
+                          <p>Melihat Akun Anda</p>
+                      </div>
+                  </div>
+              </div>
+            </a>
+            <a href="/ped/{{auth()->user()->id}}">
+              <div class="col-md-6 col-sm-6 small-padding">
+                  <div class="job-feature">
+                      <div class="feature-caption">
+                          <h5>Pedagang</h5>
+                          <p>Detail Akun Pedagang</p>
+                      </div>
+                  </div>
+              </div>
+          </a>
+        </div>
+    </div>
+</section>
+@endsection
+@endif
