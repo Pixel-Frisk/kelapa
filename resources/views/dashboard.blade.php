@@ -75,7 +75,7 @@
 <section class="first-feature">
     <div class="container">
         <div class="all-features">
-          <a href="/profile/{{auth()->user()->id}}">
+          <a href="/profilPB/{{auth()->user()->id}}">
               <div class="col-md-6 col-sm-6 small-padding">
                   <div class="job-feature">
                       <div class="feature-caption">
@@ -117,7 +117,7 @@
                 <div class="caption text-center cl-white">
                     <h2>Selamat Datang</h2>
                     <br>
-                    <p><font size="6">Nama</font></p>
+                    <p><font size="6">{{auth()->user()->name}}</font></p>
                 </div>
             </div>
         </div>
@@ -127,7 +127,7 @@
 <section class="first-feature">
     <div class="container">
         <div class="all-features">
-          <a href="/profile/{{auth()->user()->id}}">
+          <a href="/profilSopir/{{auth()->user()->id}}">
               <div class="col-md-6 col-sm-6 small-padding">
                   <div class="job-feature">
                       <div class="feature-caption">

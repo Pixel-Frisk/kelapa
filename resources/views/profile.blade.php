@@ -71,7 +71,7 @@
 <!-- Header Title Start -->
   <section class="inner-header-title blank">
     <div class="container">
-      <h1>Data Detail</h1>
+      <h1>Profil</h1>
     </div>
   </section>
   <div class="clearfix"></div>
@@ -138,7 +138,7 @@
           <div class="detail pannel-footer">
             <div class="col-md-12 col-sm-12">
               <div class="detail-pannel-footer-btn pull-right">
-                <a href="{{ url('/dashboard')}}" class="footer-btn choose-cover">Kembali</a>
+                <a href="{{ url('/dashboard')}}" class="footer-btn choose-cover">Back</a>
               </div>
             </div>
           </div>
@@ -156,7 +156,7 @@
   <!-- Header Title Start -->
   <section class="inner-header-title blank">
     <div class="container">
-      <h1>Data Detail</h1>
+      <h1>Profil</h1>
     </div>
   </section>
   <div class="clearfix"></div>
@@ -223,7 +223,7 @@
           <div class="detail pannel-footer">
             <div class="col-md-12 col-sm-12">
               <div class="detail-pannel-footer-btn pull-right">
-                <a href="{{ url('/dashboard')}}" class="footer-btn choose-cover">Kembali</a>
+                <a href="{{ url('/dashboard')}}" class="footer-btn choose-cover">Back</a>
               </div>
             </div>
           </div>

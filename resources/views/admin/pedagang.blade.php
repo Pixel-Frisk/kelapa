@@ -18,10 +18,10 @@ class="active"
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Form Pedagang</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <h5 class="modal-title">Tambah Data</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button>
+          </button> -->
         </div>
         <!-- Menambah Akun Sopir -->
         <div class="modal-body">
@@ -48,8 +48,8 @@ class="active"
               <textarea name="alamat" class="form-control" id="alamat" rows="3" required></textarea>
             </div>
             <div class="modal-footer bg-whitesmoke br">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
+              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+              <button type="submit" class="btn btn-primary">Save</button>
             </div>
           </div>
         </form>
@@ -83,14 +83,14 @@ class="active"
             <div class="card-header">
               <h4>Data Pedagang Besar</h4>
               <div class="card-header-action">
-                <form method="get" action="/pedagang">
+                <form method="get" action="/searchPB">
                   <div class="input-group">
                     <input name="cari" type="text" class="form-control" placeholder="Search">
                     <div class="input-group-btn">
                       <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                     </div>
                     <button type="button" class="btn btn-primary float-right ml-1" data-toggle="modal" data-target="#exampleModal">
-                      +
+                      Add
                     </button>
                   </div>
                 </form>
@@ -117,7 +117,8 @@ class="active"
                       <td>{{$users->hp}}</td>
                       <td>{{$users->alamat}}</td>
                       <td>{{$users->statusAcc}}</td>
-                      <td><a href="/users/{{$users->id}}/edit" class="btn btn-secondary">Edit</a>
+                      <td><a href="/users/{{$users->id}}/detail" class="btn btn-primary">Detail</a>
+                      <a href="/users/{{$users->id}}/edit" class="btn btn-secondary">Edit</a>
                       </td>
                     </tr>
                     @endforeach

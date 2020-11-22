@@ -10,18 +10,18 @@ use App\User;
 class AuthController extends Controller
 {
   public function login_t(){
-    return view('login_t');
+    return view('login');
   }
 
-  public function postLogin(Request $request){
+  public function Post_Login(Request $request){
     if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password])){
       if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password, 'statusAcc'=>'on'])){
         return redirect('/dashboard');
       } else {
-        return redirect('/')->with('status', 'User sudah tidak Aktif');
+        return redirect('/login')->with('status', 'User sudah tidak Aktif');
       }
     } else {
-      return redirect('/')->with('status', 'Username/Password salah');
+      return redirect('/login')->with('status', 'data tidak valid');
     }
   }
 

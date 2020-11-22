@@ -14,30 +14,34 @@ Route::get('/', function(){
   return view('home');
 });
 Route::get('/login', 'AuthController@login_t')->name('login');
-Route::post('/postLogin', 'AuthController@postLogin');
+Route::post('/postLogin', 'AuthController@Post_Login');
 Route::get('/logout', 'AuthController@logout');
 
-Route::group(['middleware' => ['auth','CheckStatus:admin']],function(){
-  Route::get('/pedagang', 'UserController@getDataPB');
-  Route::post('/users/createPB', 'UserController@createPB');
-  Route::get('/users/{id}/edit', 'UserController@edit');
-  Route::post('/users/{id}/update', 'UserController@update');
+Route::group(['middleware' => ['auth','checkUserRole:admin']],function(){
+  Route::get('/pedagang', 'AdminController@ListPb');
+  Route::get('/searchPB', 'AdminController@searchPB');
+  Route::post('/users/createPB', 'AdminController@createPb');
+  Route::get('/users/{id}/edit', 'AdminController@edit');
+  Route::get('/users/{id}/detail', 'AdminController@detail');
+  Route::post('/users/{id}/update', 'AdminController@update');
   // Route::get('/users/{id}/delete', 'UserController@delete');
-  Route::get('/sopir', 'UserController@getDataSopir');
-  Route::post('/users/createSopir', 'UserController@createSopir');
+  Route::get('/sopir', 'AdminController@listSopir');
+  Route::get('/searchSopir', 'AdminController@searchSopir');
+  Route::post('/users/createSopir', 'AdminController@createSopir');
 });
 
-Route::group(['middleware' => ['auth','CheckStatus:admin,pedagang,sopir']],function(){
-  Route::get('/profile/{id}', 'HomeController@profile');
+Route::group(['middleware' => ['auth','checkUserRole:admin,pedagang,sopir']],function(){
+  Route::get('/profilPB/{id}', 'PbController@profil');
+  Route::get('/profilSopir/{id}', 'SopirController@profil');
   Route::get('/dashboard', 'HomeController@dashboard');
 });
 
-Route::group(['middleware' => ['auth','CheckStatus:pedagang']],function(){
-  Route::get('/sop/{id}', 'PBController@sopir');
+Route::group(['middleware' => ['auth','checkUserRole:pedagang']],function(){
+  Route::get('/sop/{id}', 'PbController@sopir');
 });
 
-Route::group(['middleware' => ['auth','CheckStatus:sopir']],function(){
-  Route::get('/ped/{id}', 'SopirController@pedagang');
+Route::group(['middleware' => ['auth','checkUserRole:sopir']],function(){
+  Route::get('/ped/{id}', 'SopirController@pb');
 });
 //Auth::routes();
 

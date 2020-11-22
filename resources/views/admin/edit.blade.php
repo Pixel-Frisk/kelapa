@@ -8,7 +8,7 @@
 <div class="main-content">
   <section class="section">
     <div class="section-header">
-      <h1>Profile</h1>
+      <h1>Form Edit</h1>
       <div class="section-header-breadcrumb">
         @if($users->status == 'pb')
         <div class="btn btn-outline-primary"><a href="{{ url('/pedagang')}}">Kembali</a></div>
@@ -24,7 +24,7 @@
             <form action="/users/{{$users->id}}/update" method="post" class="needs-validation" novalidate="">
               @csrf
               <div class="card-header">
-                <h4>Edit Profile</h4>
+                <h4>Form Edit</h4>
               </div>
               <div class="card-body">
                   <div class="row">
@@ -78,9 +78,8 @@
                     </div>
                   </div>
               </div>
-
               <div class="card-footer text-right">
-                <button type="submit" class="btn btn-secondary">Save changes</button>
+                <button type="submit" class="btn btn-secondary">Save</button>
               </div>
             </form>
           </div>

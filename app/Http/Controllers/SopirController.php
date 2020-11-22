@@ -13,11 +13,15 @@ class SopirController extends Controller
     return view('sopir.dashboard');
   }
 
-  public function pedagang($id){
-    $user = DB::table('users as u')
-                ->join('transactions  as t', 'u.id', '=', 't.id_sopir')
+  public function profil($id){
+    $user = User::find($id);
+    return view('profile', ['users' => $user]);
+  }
+
+  public function pb($id){
+    $user = User::join('transactions  as t', 'users.id', '=', 't.id_sopir')
                 ->join('users as us', 't.id_pb', '=', 'us.id')
-                ->where('u.id', '=', $id)
+                ->where('users.id', '=', $id)
                 ->select('us.name', 'us.email', 'us.hp', 'us.alamat', 'us.statusAcc')
                 ->first();
     return view('sopir.pedagang', ['users' => $user]);

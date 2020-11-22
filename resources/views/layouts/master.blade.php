@@ -37,11 +37,11 @@
             <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
               <div class="d-sm-none d-lg-inline-block">Hi, {{auth()->user()->name}}</div></a>
               <div class="dropdown-menu dropdown-menu-right">
-                <a href="/profile/{{auth()->user()->id}}" class="dropdown-item has-icon">
+                <!-- <a href="/profile/{{auth()->user()->id}}" class="dropdown-item has-icon">
                   <i class="far fa-user"></i> Profile
-                </a>
+                </a> -->
                 <div class="dropdown-divider"></div>
-                <a href="/logout" class="dropdown-item has-icon text-danger" onclick="return confirm('Apakah anda yakin ingin keluar ?')">
+                <a href="/logout" class="dropdown-item has-icon text-danger" onclick="return confirm('apakah anda yakin ingin keluar ?')">
                   <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
               </div>
@@ -130,7 +130,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="left-br"><a href="/logout" class="signin" onclick="return confirm('Apakah anda yakin ingin keluar ?')">Logout</a></li>
+                        <li class="left-br"><a href="/logout" class="signin" onclick="return confirm('apakah anda yakin ingin keluar ?')">Logout</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class="dropdown">
@@ -215,7 +215,7 @@
               </div>
               <div class="collapse navbar-collapse" id="navbar-menu">
                   <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-                      <li class="left-br"><a href="/logout" class="signin" onclick="return confirm('Apakah anda yakin ingin keluar ?')">Logout</a></li>
+                      <li class="left-br"><a href="/logout" class="signin" onclick="return confirm('apakah anda yakin ingin keluar ?')">Logout</a></li>
                   </ul>
                   <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                       <li class="dropdown">
