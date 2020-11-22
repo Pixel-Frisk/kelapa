@@ -25,10 +25,9 @@ class HomeController extends Controller
      */
     public function dashboard()
     {
-      $users = DB::table('users as u')
-                  ->join('transactions  as t', 'u.id', '=', 't.id_sopir')
+      $users = User::join('transactions  as t', 'users.id', '=', 't.id_sopir')
                   ->join('users as us', 't.id_pb', '=', 'us.id')
-                  ->select('u.name', 'us.alamat', 't.created_at', 't.updated_at')
+                  ->select('users.name', 'us.alamat', 't.created_at', 't.updated_at')
                   ->get();
       return view('dashboard', ['users' => $users]);
     }

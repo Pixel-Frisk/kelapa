@@ -65,6 +65,8 @@
                     <li @yield('active2')><a href="{{ url('/sopir')}}">Sopir</a></li>
                   </ul>
                 </li>
+                <li class="@yield('transaksi')"><a class="nav-link" href="{{ url('/transaksi')}}"><i class="fas fa-pencil-ruler"></i> <span>Transaksi</span></a></li>
+                <li class="@yield('stok')"><a class="nav-link" href="{{ url('/stok')}}"><i class="fas fa-ellipsis-h"></i> <span>Stok</span></a></li>
               </ul>
             </aside>
           </div>

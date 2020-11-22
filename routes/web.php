@@ -28,6 +28,12 @@ Route::group(['middleware' => ['auth','checkUserRole:admin']],function(){
   Route::get('/sopir', 'AdminController@listSopir');
   Route::get('/searchSopir', 'AdminController@searchSopir');
   Route::post('/users/createSopir', 'AdminController@createSopir');
+  Route::get('/transaksi', 'AdminController@transaksi');
+  Route::get('/editTransaksi', 'AdminController@editTransaksi');
+  Route::get('/detailTransaksi', 'AdminController@detailTransaksi');
+  Route::get('/stok', 'AdminController@stok');
+  Route::get('/editStok', 'AdminController@editStok');
+  Route::get('/detailStok', 'AdminController@detailStok');
 });
 
 Route::group(['middleware' => ['auth','checkUserRole:admin,pedagang,sopir']],function(){

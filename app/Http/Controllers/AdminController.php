@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Transaction;
 
 class AdminController extends Controller
 {
@@ -119,5 +120,34 @@ class AdminController extends Controller
 
     $user->save();
     return redirect('/sopir')->with('status', 'data telah ditambahkan');
+  }
+
+  public function transaksi(){
+    $user = User::get();
+    $transaksi = User::join('transactions  as t', 'users.id', '=', 't.id_sopir')
+                ->join('users as us', 't.id_pb', '=', 'us.id')
+                ->select('users.name', 'us.alamat', 't.created_at', 't.updated_at')
+                ->get();
+    return view('admin.transaksi',['transaksi' => $transaksi], ['user' => $user]);
+  }
+
+  public function editTransaksi(){
+    return view('admin.editTransaksi');
+  }
+
+  public function detailTransaksi(){
+    return view('admin.detailTransaksi');
+  }
+
+  public function stok(){
+    return view('admin.stok');
+  }
+
+  public function editStok(){
+    return view('admin.editStok');
+  }
+
+  public function detailStok(){
+    return view('admin.detailStok');
   }
 }

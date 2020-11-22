@@ -48,7 +48,7 @@ class="active"
               <textarea name="alamat" class="form-control" id="alamat" rows="3"></textarea>
             </div>
             <div class="modal-footer bg-whitesmoke br">
-              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-primary">Save</button>
             </div>
           </div>
