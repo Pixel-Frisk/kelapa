@@ -9,9 +9,6 @@
   <section class="section">
     <div class="section-header">
       <h1>Form Edit</h1>
-      <div class="section-header-breadcrumb">
-        <div class="btn btn-outline-primary"><a href="{{ url('/stok')}}">Kembali</a></div>
-      </div>
     </div>
       <div class="row mt-sm-4">
         <div class="col-12 col-md-12 col-lg-7">
@@ -33,7 +30,7 @@
                   </div>
               </div>
               <div class="card-footer text-right">
-                <button type="submit" class="btn btn-secondary">Save</button>
+                <button type="submit" class="btn btn-secondary">save changes</button>
               </div>
             </form>
           </div>

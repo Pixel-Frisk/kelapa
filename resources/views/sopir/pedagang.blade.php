@@ -77,7 +77,7 @@ class="active"
           <div class="detail pannel-footer">
             <div class="col-md-12 col-sm-12">
               <div class="detail-pannel-footer-btn pull-right">
-                <a href="{{ url('/dashboard')}}" class="footer-btn choose-cover">Back</a>
+                <a href="{{ url('/dashboard')}}" class="footer-btn choose-cover">kembali ke dashboard</a>
               </div>
             </div>
           </div>

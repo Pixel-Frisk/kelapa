@@ -9,9 +9,6 @@
   <section class="section">
     <div class="section-header">
       <h1>Form Detail</h1>
-      <div class="section-header-breadcrumb">
-        <div class="btn btn-outline-primary"><a href="{{ url('/stok')}}">Kembali</a></div>
-      </div>
     </div>
       <div class="row mt-sm-4">
         <div class="col-12 col-md-12 col-lg-7">

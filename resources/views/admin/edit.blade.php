@@ -9,14 +9,6 @@
   <section class="section">
     <div class="section-header">
       <h1>Form Edit</h1>
-      <div class="section-header-breadcrumb">
-        @if($users->status == 'pb')
-        <div class="btn btn-outline-primary"><a href="{{ url('/pedagang')}}">Kembali</a></div>
-        @endif
-        @if($users->status == 'sopir')
-        <div class="btn btn-outline-primary"><a href="{{ url('/sopir')}}">Kembali</a></div>
-        @endif
-      </div>
     </div>
       <div class="row mt-sm-4">
         <div class="col-12 col-md-12 col-lg-7">
@@ -79,7 +71,7 @@
                   </div>
               </div>
               <div class="card-footer text-right">
-                <button type="submit" class="btn btn-secondary">Save</button>
+                <button type="submit" class="btn btn-secondary">save changes</button>
               </div>
             </form>
           </div>
