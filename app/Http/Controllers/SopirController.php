@@ -19,8 +19,8 @@ class SopirController extends Controller
   }
 
   public function pb($id){
-    $user = User::join('transactions  as t', 'users.id', '=', 't.id_sopir')
-                ->join('users as us', 't.id_pb', '=', 'us.id')
+    $user = User::join('penyaluran  as p', 'users.id', '=', 'p.id_sopir')
+                ->join('users as us', 'p.id_pb', '=', 'us.id')
                 ->where('users.id', '=', $id)
                 ->select('us.name', 'us.email', 'us.hp', 'us.alamat', 'us.statusAcc')
                 ->first();

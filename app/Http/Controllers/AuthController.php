@@ -18,7 +18,7 @@ class AuthController extends Controller
       if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password, 'statusAcc'=>'on'])){
         return redirect('/dashboard');
       } else {
-        return redirect('/login')->with('status', 'User sudah tidak Aktif');
+        return redirect('/login')->with('status', 'data tidak valid');
       }
     } else {
       return redirect('/login')->with('status', 'data tidak valid');

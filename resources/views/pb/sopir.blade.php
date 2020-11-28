@@ -28,17 +28,17 @@ class="active"
   <div class="col-md-12">
     <div class="mng-company-name">
       <div class="col-md-3 col-sm-3">
+        <span class="cmp-time">Tanggal</span>
+      </div>
+    </div>
+    <div class="mng-company-name">
+      <div class="col-md-3 col-sm-3">
         <span class="cmp-time">Nama Sopir</span>
       </div>
     </div>
     <div class=class="mng-company-name">
       <div class="col-md-3 col-sm-3">
         <span class="cmp-time">Nomor Hp</span>
-      </div>
-    </div>
-    <div class=class="mng-company-name">
-      <div class="col-md-3 col-sm-3">
-        <span class="cmp-time">Status Akun</span>
       </div>
     </div>
     <div class=class="mng-company-name">
@@ -51,17 +51,17 @@ class="active"
       <div class="mng-company">
         <div class="col-md-3 col-sm-3">
           <div class="mng-company-name">
+            <span class="cmp-time">{{$row->created_at}}</span>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3">
+          <div class="mng-company-name">
             <span class="cmp-time">{{$row->name}}</span>
           </div>
         </div>
         <div class="col-md-3 col-sm-3">
           <div class="mng-company-name">
             <span class="cmp-time">{{$row->hp}}</span>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-3">
-          <div class="mng-company-name">
-            <span class="cmp-time">{{$row->statusAcc}}</span>
           </div>
         </div>
         <div class="col-md-3 col-sm-3">

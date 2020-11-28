@@ -19,15 +19,20 @@
                 <h4>Form Detail</h4>
               </div>
               <div class="card-body">
-                  <div class="row">
-                    <div class="form-group col-md-6 col-12">
-                      <label>Stok</label>
-                      <input name="name" type="text" class="form-control" value="" disabled required>
-                      <div class="invalid-feedback">
-                        Tolong isi Nama
-                      </div>
-                    </div>
+                <div class="row">
+                  <div class="form-group col-md-6 col-12">
+                    <label>Tipe Kelapa</label>
+                    <input name="name" type="text" class="form-control" value="" required disabled>
                   </div>
+                  <div class="form-group col-md-6 col-12">
+                    <label>Kelapa Masuk</label>
+                    <input name="name" type="text" class="form-control" value="" required disabled>
+                  </div>
+                  <div class="form-group col-md-6 col-12">
+                    <label>Kelapa Keluar</label>
+                    <input name="name" type="text" class="form-control" value="" required disabled>
+                  </div>
+                </div>
               </div>
             </form>
           </div>

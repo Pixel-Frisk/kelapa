@@ -61,7 +61,7 @@ active
               </div>
             @endif
             <div class="card-header">
-              <h4>Data Transaksi</h4>
+              <h4>Data Stok</h4>
               <div class="card-header-action">
                 <form method="get" action="">
                   <div class="input-group">
@@ -69,9 +69,9 @@ active
                     <div class="input-group-btn">
                       <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                     </div>
-                    <button type="button" class="btn btn-primary float-right ml-1" data-toggle="modal" data-target="#exampleModal">
+                    <!-- <button type="button" class="btn btn-primary float-right ml-1" data-toggle="modal" data-target="#exampleModal">
                       Add
-                    </button>
+                    </button> -->
                   </div>
                 </form>
               </div>
@@ -81,17 +81,77 @@ active
                 <table class="table table-striped" id="sortable-table">
                   <thead>
                     <tr>
-                      <th>Stock</th>
-                      <th>Action</th>
+                      <th rowspan="2"><center>Tanggal</center></th>
+                      <th colspan="3"><center>Kelapa Masuk</center></th>
+                      <th colspan="3"><center>Kelapa Keluar</center></th>
+                      <th colspan="3"><center>Stock</center></th>
+                      <th rowspan="2">Action</th>
                     </tr>
+                    <tr>
+                      <th><center>A</center></th>
+                      <th><center>B</center></th>
+                      <th><center>C</center></th>
+                      <th><center>A</center></th>
+                      <th><center>B</center></th>
+                      <th><center>C</center></th>
+                      <th><center>A</center></th>
+                      <th><center>B</center></th>
+                      <th><center>C</center></th>
                   </thead>
                   <tbody>
+                    @foreach ($stok as $key => $stok)
                     <tr>
-                      <td>stok</td>
-                      <td><a href="/detailStok" class="btn btn-primary">Detail</a>
-                      <a href="/editStok" class="btn btn-secondary">Edit</a>
+                      <td><center>{{$stok->created_at}}</center></td>
+                      @if($stok->keMasA == 0)
+                      <td><center>-</center></td>
+                      @else
+                      <td><center>{{$stok->keMasA}}</center></td>
+                      @endif
+                      @if($stok->keMasB == 0)
+                      <td><center>-</center></td>
+                      @else
+                      <td><center>{{$stok->keMasB}}</center></td>
+                      @endif
+                      @if($stok->keMasC == 0)
+                      <td><center>-</center></td>
+                      @else
+                      <td><center>{{$stok->keMasC}}</center></td>
+                      @endif
+                      @if($stok->keKelA == 0)
+                      <td><center>-</center></td>
+                      @else
+                      <td><center>{{$stok->keKelA}}</center></td>
+                      @endif
+                      @if($stok->keKelB == 0)
+                      <td><center>-</center></td>
+                      @else
+                      <td><center>{{$stok->keKelB}}</center></td>
+                      @endif
+                      @if($stok->keKelC == 0)
+                      <td><center>-</center></td>
+                      @else
+                      <td><center>{{$stok->keKelC}}</center></td>
+                      @endif
+                      @if($stok->stokA == 0)
+                      <td><center>-</center></td>
+                      @else
+                      <td><center>{{$stok->stokA}}</center></td>
+                      @endif
+                      @if($stok->stokB == 0)
+                      <td><center>-</center></td>
+                      @else
+                      <td><center>{{$stok->stokB}}</center></td>
+                      @endif
+                      @if($stok->stokC == 0)
+                      <td><center>-</center></td>
+                      @else
+                      <td><center>{{$stok->stokC}}</center></td>
+                      @endif
+                      <td>
+                        <a href="/editStok/{{$stok->id}}" class="btn btn-secondary">Edit</a>
                       </td>
                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>

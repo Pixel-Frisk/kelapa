@@ -9,7 +9,7 @@
 <div class="main-content">
   <section class="section">
     <div class="section-header">
-      <h1>Transaksi</h1>
+      <h1>Penyaluran</h1>
     </div>
     <div class="section-body">
       <div class="row">
@@ -89,7 +89,7 @@
               <div class="col-md-6 col-sm-6 small-padding">
                   <div class="job-feature">
                       <div class="feature-caption">
-                          <h5>Sopir</h5>
+                          <h5>Pesanan</h5>
                           <p>Detail Akun Sopir</p>
                       </div>
                   </div>
@@ -141,7 +141,7 @@
               <div class="col-md-6 col-sm-6 small-padding">
                   <div class="job-feature">
                       <div class="feature-caption">
-                          <h5>Pedagang</h5>
+                          <h5>Pengiriman</h5>
                           <p>Detail Akun Pedagang</p>
                       </div>
                   </div>

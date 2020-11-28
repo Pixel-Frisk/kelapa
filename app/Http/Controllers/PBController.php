@@ -18,10 +18,10 @@ class PbController extends Controller
   }
 
   public function sopir($id){
-    $user = User::join('transactions  as t', 'users.id', '=', 't.id_pb')
-                ->join('users as us', 't.id_sopir', '=', 'us.id')
+    $user = User::join('penyaluran  as p', 'users.id', '=', 'p.id_pb')
+                ->join('users as us', 'p.id_sopir', '=', 'us.id')
                 ->where('users.id', '=', $id)
-                ->select('us.name', 'us.hp', 'us.alamat', 'us.statusAcc')
+                ->select('p.created_at' ,'us.name', 'us.hp', 'us.alamat', 'us.statusAcc')
                 ->get();
     return view('pb.sopir', ['users' => $user]);
   }

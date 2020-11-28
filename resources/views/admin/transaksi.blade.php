@@ -19,29 +19,52 @@ active
             <span aria-hidden="true">&times;</span>
           </button> -->
         </div>
-        <!-- Menambah Akun Sopir -->
         <div class="modal-body">
-          <form action="" method="post">
+          <form action="/transaksi/create" method="post">
             @csrf
             <div class="form-group">
-              <label for="name">Nama Sopir</label>
-              <select id="inputState" class="form-control" id="nameSopir" required>
-                @foreach ($user as $key => $sopir)
-                @if($sopir->status == 'sopir')
-                <option>{{$sopir->name}}</option>
-                @endif
-                @endforeach
+              <label for="name">Faktur</label>
+              <select name='faktur' class="form-control">
+                  <option value='Penjualan'>Penjualan</option>
+                  <option value='Pembelian'>Pembelian</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="email">Nama Pedangang</label>
-              <select id="inputState" class="form-control" id="namePB" required>
-                @foreach ($user as $key => $pb)
-                @if($pb->status == 'pedagang')
-                <option>{{$pb->name}}</option>
-                @endif
-                @endforeach
+              <label for="nama">Nama</label>
+              <input name="nama" type="text" class="form-control" id="nama" required>
+            </div>
+            <div class="form-group">
+              <label for="namaItem">Nama Item</label>
+              <select name='namaItem' class="form-control">
+                  <option value='Kelapa A'>Kelapa A</option>
+                  <option value='Kelapa B'>Kelapa B</option>
+                  <option value='Kelapa C'>Kelapa C</option>
+                  <option value='Gaji Karyawan'>Gaji Karyawan</option>
+                  <option value='Pemeliharaan'>Pemeliharaan</option>
+                  <option value='Bonus Karyawan'>Bonus Karyawan</option>
+                  <option value='Tempurung Kelapa'>Tempurung Kelapa</option>
+                  <option value='Sabut Kelapa'>Sabut Kelapa</option>
+                  <option value='Lainnya'>Lainnya</option>
               </select>
+            </div>
+            <div class="form-group">
+              <label for="quantity">Quantity</label>
+              <input name="quantity" type="number" class="form-control" id="quantity" required>
+            </div>
+            <div class="form-group">
+              <label for="harga">Harga</label>
+              <input name="harga" type="number" class="form-control" id="harga" required>
+            </div>
+            <div class="form-group">
+              <label for="jenisPembayaran">Jenis Pembayaran</label>
+              <select name='jenisPembayaran' class="form-control">
+                  <option value='Cash'>Cash</option>
+                  <option value='Hutang'>Hutang</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="keterangan">Keterangan</label>
+              <input name="keterangan" type="text" class="form-control" id="keterangan" required>
             </div>
             <div class="modal-footer bg-whitesmoke br">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
@@ -65,6 +88,11 @@ active
             @if (session('status'))
               <div class="alert alert-success">
                 {{ session('status') }}
+              </div>
+            @endif
+            @if (session('item'))
+              <div class="alert alert-danger">
+                {{ session('item') }}
               </div>
             @endif
             @if ($errors->any())
@@ -97,22 +125,39 @@ active
                 <table class="table table-striped" id="sortable-table">
                   <thead>
                     <tr>
-                      <th>Nama Sopir</th>
-                      <th>Alamat Pengiriman</th>
-                      <th>Waktu Berangkat</th>
-                      <th>Waktu Sampai</th>
+                      <th>Tanggal</th>
+                      <th>Faktur</th>
+                      <th>Nama Item</th>
+                      <th>Debit</th>
+                      <th>Kredit</th>
+                      <th>Saldo</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($transaksi as $transaksi)
+                    @foreach ($penjualan as $key => $penjualan)
                     <tr>
-                      <td>{{$transaksi->name}}</td>
-                      <td>{{$transaksi->alamat}}</td>
-                      <td>{{$transaksi->created_at}}</td>
-                      <td>{{$transaksi->updated_at}}</td>
-                      <td><a href="/detailTransaksi" class="btn btn-primary">Detail</a>
-                      <a href="/editTransaksi" class="btn btn-secondary">Edit</a>
+                      <td>{{$penjualan->created_at}}</td>
+                      <td>{{$penjualan->faktur}}</td>
+                      <td>{{$penjualan->namaItem}}</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>
+                      <a href="/editPenjualan/{{$penjualan->id}}" class="btn btn-secondary">Edit</a>
+                      </td>
+                    </tr>
+                    @endforeach
+                    @foreach ($pembelian as $key => $pembelian)
+                    <tr>
+                      <td>{{$pembelian->created_at}}</td>
+                      <td>{{$pembelian->faktur}}</td>
+                      <td>{{$pembelian->namaItem}}</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>
+                      <a href="/editPembelian/{{$pembelian->id}}" class="btn btn-secondary">Edit</a>
                       </td>
                     </tr>
                     @endforeach
@@ -126,4 +171,5 @@ active
     </div>
   </section>
 </div>
+</script>
 @endsection

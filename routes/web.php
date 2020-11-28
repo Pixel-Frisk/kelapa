@@ -29,11 +29,14 @@ Route::group(['middleware' => ['auth','checkUserRole:admin']],function(){
   Route::get('/searchSopir', 'AdminController@searchSopir');
   Route::post('/users/createSopir', 'AdminController@createSopir');
   Route::get('/transaksi', 'AdminController@transaksi');
-  Route::get('/editTransaksi', 'AdminController@editTransaksi');
-  Route::get('/detailTransaksi', 'AdminController@detailTransaksi');
+  Route::post('/transaksi/create', 'AdminController@transaksiCreate');
+  Route::get('/editPenjualan/{id}', 'AdminController@editPenjualan');
+  Route::get('/editPembelian/{id}', 'AdminController@editPembelian');
+  Route::post('/updatePenjualan/{id}', 'AdminController@updatePenjualan');
+  Route::post('/updatePembelian/{id}', 'AdminController@updatePembelian');
   Route::get('/stok', 'AdminController@stok');
-  Route::get('/editStok', 'AdminController@editStok');
-  Route::get('/detailStok', 'AdminController@detailStok');
+  Route::get('/editStok/{id}', 'AdminController@editStok');
+  Route::post('/updateStok/{id}', 'AdminController@updateStok');
 });
 
 Route::group(['middleware' => ['auth','checkUserRole:admin,pedagang,sopir']],function(){
