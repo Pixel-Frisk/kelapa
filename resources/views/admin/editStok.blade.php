@@ -20,6 +20,10 @@
               </div>
               <div class="card-body">
                 <div class="row">
+                  <div class="form-group col-md-12 col-12">
+                    <label>Tanggal</label>
+                    <input name="created_at" type="datetime" class="form-control" value="{{$stok->created_at}}" required>
+                  </div>
                   <div class="form-group col-md-4 col-12">
                     <label>Kelapa Masuk A</label>
                     <input name="keMasA" type="text" class="form-control" value="{{$stok->keMasA}}" required>

@@ -28,13 +28,16 @@ Route::group(['middleware' => ['auth','checkUserRole:admin']],function(){
   Route::get('/sopir', 'AdminController@listSopir');
   Route::get('/searchSopir', 'AdminController@searchSopir');
   Route::post('/users/createSopir', 'AdminController@createSopir');
+  //Route untuk Sprint 2
   Route::get('/transaksi', 'AdminController@transaksi');
-  Route::post('/transaksi/create', 'AdminController@transaksiCreate');
+  Route::post('/penjualan/create', 'AdminController@penjualanCreate');
+  Route::post('/pembelian/create', 'AdminController@pembelianCreate');
   Route::get('/editPenjualan/{id}', 'AdminController@editPenjualan');
   Route::get('/editPembelian/{id}', 'AdminController@editPembelian');
   Route::post('/updatePenjualan/{id}', 'AdminController@updatePenjualan');
   Route::post('/updatePembelian/{id}', 'AdminController@updatePembelian');
   Route::get('/stok', 'AdminController@stok');
+  Route::post('/createStok', 'AdminController@createStok');
   Route::get('/editStok/{id}', 'AdminController@editStok');
   Route::post('/updateStok/{id}', 'AdminController@updateStok');
 });

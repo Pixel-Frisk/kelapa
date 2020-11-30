@@ -21,11 +21,23 @@ active
         </div>
         <!-- Menambah Akun Sopir -->
         <div class="modal-body">
-          <form action="/users/createPB" method="post">
+          <form action="/createStok" method="post">
             @csrf
             <div class="form-group">
-              <label for="name">Banyak Stok</label>
-              <input name="name" type="text" class="form-control" id="stok" required>
+              <label for="tanggal">Tanggal</label>
+              <input name="tanggal" type="date" class="form-control" id="tanggal" required>
+            </div>
+            <div class="form-group">
+              <label for="name">Kelapa A</label>
+              <input name="keMasA" type="number" class="form-control" id="keMasA" placeholder="Kelapa Masuk" required>
+            </div>
+            <div class="form-group">
+              <label for="name">Kelapa B</label>
+              <input name="keMasB" type="number" class="form-control" id="keMasB" placeholder="Kelapa Masuk" required>
+            </div>
+            <div class="form-group">
+              <label for="name">Kelapa C</label>
+              <input name="keMasC" type="number" class="form-control" id="keMasC" placeholder="Kelapa Masuk" required>
             </div>
             <div class="modal-footer bg-whitesmoke br">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
@@ -51,6 +63,11 @@ active
                 {{ session('status') }}
               </div>
             @endif
+            @if (session('stok'))
+              <div class="alert alert-danger">
+                {{ session('stok') }}
+              </div>
+            @endif
             @if ($errors->any())
               <div class="alert alert-danger">
                   <ul>
@@ -65,13 +82,13 @@ active
               <div class="card-header-action">
                 <form method="get" action="">
                   <div class="input-group">
-                    <input name="cari" type="text" class="form-control" placeholder="Search">
+                    <!-- <input name="cari" type="text" class="form-control" placeholder="Search">
                     <div class="input-group-btn">
                       <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-                    </div>
-                    <!-- <button type="button" class="btn btn-primary float-right ml-1" data-toggle="modal" data-target="#exampleModal">
+                    </div> -->
+                    <button type="button" class="btn btn-primary float-right ml-1" data-toggle="modal" data-target="#exampleModal">
                       Add
-                    </button> -->
+                    </button>
                   </div>
                 </form>
               </div>
@@ -101,7 +118,7 @@ active
                   <tbody>
                     @foreach ($stok as $key => $stok)
                     <tr>
-                      <td><center>{{$stok->created_at}}</center></td>
+                      <td><center>{{$stok->tanggal}}</center></td>
                       @if($stok->keMasA == 0)
                       <td><center>-</center></td>
                       @else

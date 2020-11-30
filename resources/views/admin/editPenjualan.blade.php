@@ -21,6 +21,18 @@
               <div class="card-body">
                 <div class="row">
                   <div class="form-group col-md-6 col-12">
+                    <label>Tanggal</label>
+                    <input name="tanggal" type="datetime" class="form-control" value="{{$penjualan->tanggal}}" required>
+                  </div>
+                  <div class="form-group col-md-6 col-12">
+                    <label>No. Penjualan</label>
+                    <input name="id" type="text" class="form-control" value="{{$penjualan->id}}" required disabled>
+                  </div>
+                  <div class="form-group col-md-6 col-12">
+                    <label>Nama Supplier</label>
+                    <input name="namaSupplier" type="text" class="form-control" value="{{$penjualan->namaSupplier}}" required>
+                  </div>
+                  <div class="form-group col-md-6 col-12">
                     <label>Nama Item</label>
                     <select name='namaItem' class="form-control">
                       @if($penjualan->namaItem == 'Kelapa A')
@@ -72,10 +84,6 @@
                         <option selected value='Lainnya'>Lainnya</option>
                       @endif
                     </select>
-                  </div>
-                  <div class="form-group col-md-6 col-12">
-                    <label>Nama</label>
-                    <input name="nama" type="text" class="form-control" value="{{$penjualan->nama}}" required>
                   </div>
                   <div class="form-group col-md-6 col-12">
                     <label>Quantity</label>

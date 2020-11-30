@@ -51,7 +51,7 @@
         <div class="main-sidebar">
           <aside id="sidebar-wrapper">
             <div class="sidebar-brand">
-              <a>SIIPAKA</a>
+              <a href="/dashboard">SIIPAKA</a>
             </div>
             <div class="sidebar-brand sidebar-brand-sm">
               <a>SPK</a>
