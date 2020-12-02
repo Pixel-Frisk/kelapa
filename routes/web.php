@@ -21,25 +21,29 @@ Route::group(['middleware' => ['auth','checkUserRole:admin']],function(){
   Route::get('/pedagang', 'AdminController@ListPb');
   Route::get('/searchPB', 'AdminController@searchPB');
   Route::post('/users/createPB', 'AdminController@createPb');
-  Route::get('/users/{id}/edit', 'AdminController@edit');
-  Route::get('/users/{id}/detail', 'AdminController@detail');
-  Route::post('/users/{id}/update', 'AdminController@update');
-  // Route::get('/users/{id}/delete', 'UserController@delete');
   Route::get('/sopir', 'AdminController@listSopir');
   Route::get('/searchSopir', 'AdminController@searchSopir');
   Route::post('/users/createSopir', 'AdminController@createSopir');
+  Route::get('/users/{id}/edit', 'AdminController@edit');
+  Route::get('/users/{id}/detail', 'AdminController@detail');
+  Route::post('/users/{id}/update', 'AdminController@update');
   //Route untuk Sprint 2
   Route::get('/transaksi', 'AdminController@transaksi');
-  Route::post('/penjualan/create', 'AdminController@penjualanCreate');
-  Route::post('/pembelian/create', 'AdminController@pembelianCreate');
-  Route::get('/editPenjualan/{id}', 'AdminController@editPenjualan');
-  Route::get('/editPembelian/{id}', 'AdminController@editPembelian');
-  Route::post('/updatePenjualan/{id}', 'AdminController@updatePenjualan');
-  Route::post('/updatePembelian/{id}', 'AdminController@updatePembelian');
+  Route::get('/searchTransaksi', 'AdminController@searchTransaksi');
+  Route::post('/createTransaksi', 'AdminController@createTransaksi');
+  Route::get('/editTransaksi/{id}', 'AdminController@editTransaksi');
+  Route::post('/updateTransaksi/{id}', 'AdminController@updateTransaksi');
+  Route::get('/detailTransaksi/{id}', 'AdminController@detailTransaksi');
+  Route::get('/deleteTransaksi/{id}', 'AdminController@deleteTransaksi');
+  // Route::get('/deletePenjualan/{id}', 'AdminController@deletePenjualan');
+  // Route::get('/deletePembelian/{id}', 'AdminController@deletePembelian');
   Route::get('/stok', 'AdminController@stok');
+  Route::get('/searchStok', 'AdminController@searchStok');
   Route::post('/createStok', 'AdminController@createStok');
   Route::get('/editStok/{id}', 'AdminController@editStok');
+  Route::get('/detailStok/{id}', 'AdminController@detailStok');
   Route::post('/updateStok/{id}', 'AdminController@updateStok');
+  // Route::get('/deleteStok/{id}', 'AdminController@deleteStok');
 });
 
 Route::group(['middleware' => ['auth','checkUserRole:admin,pedagang,sopir']],function(){

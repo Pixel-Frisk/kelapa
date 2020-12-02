@@ -25,11 +25,11 @@ class HomeController extends Controller
      */
     public function dashboard()
     {
-      $users = User::join('penyaluran  as p', 'users.id', '=', 'p.id_sopir')
-                  ->join('users as us', 'p.id_pb', '=', 'us.id')
-                  ->select('users.name', 'us.alamat', 'p.created_at', 'p.updated_at')
-                  ->get();
-      return view('dashboard', ['users' => $users]);
+      // $users = User::join('penyaluran  as p', 'users.id', '=', 'p.id_sopir')
+      //             ->join('users as us', 'p.id_pb', '=', 'us.id')
+      //             ->select('users.name', 'us.alamat', 'p.created_at', 'p.updated_at')
+      //             ->get();
+      return view('dashboard');
     }
 
     public function profile($id){
