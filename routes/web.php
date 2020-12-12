@@ -35,6 +35,8 @@ Route::group(['middleware' => ['auth','checkUserRole:admin']],function(){
   Route::post('/updateTransaksi/{id}', 'AdminController@updateTransaksi');
   Route::get('/detailTransaksi/{id}', 'AdminController@detailTransaksi');
   Route::get('/deleteTransaksi/{id}', 'AdminController@deleteTransaksi');
+  Route::get('/rekap', 'AdminController@rekap');
+  Route::get('/cetakPDF', 'AdminController@cetakPDF');
   // Route::get('/deletePenjualan/{id}', 'AdminController@deletePenjualan');
   // Route::get('/deletePembelian/{id}', 'AdminController@deletePembelian');
   Route::get('/stok', 'AdminController@stok');
@@ -44,6 +46,17 @@ Route::group(['middleware' => ['auth','checkUserRole:admin']],function(){
   Route::get('/detailStok/{id}', 'AdminController@detailStok');
   Route::post('/updateStok/{id}', 'AdminController@updateStok');
   // Route::get('/deleteStok/{id}', 'AdminController@deleteStok');
+  //Route untuk Sprint 3
+  Route::get('/kendaraan', 'AdminController@kendaraan');
+  Route::post('/createKendaraan', 'AdminController@createKendaraan');
+  Route::get('/editKendaraan/{id}', 'AdminController@editKendaraan');
+  Route::post('/updateKendaraan/{id}', 'AdminController@updateKendaraan');
+  Route::get('/penyaluran', 'AdminController@penyaluran');
+  Route::get('/searchPenyaluran', 'AdminController@searchPenyaluran');
+  Route::post('/createPenyaluran', 'AdminController@createPenyaluran');
+  Route::get('/deletePenyaluran/{id}', 'AdminController@deletePenyaluran');
+  Route::get('/editPenyaluran/{id}', 'AdminController@editPenyaluran');
+  Route::post('/updatePenyaluran/{id}', 'AdminController@updatePenyaluran');
 });
 
 Route::group(['middleware' => ['auth','checkUserRole:admin,pedagang,sopir']],function(){
@@ -54,10 +67,13 @@ Route::group(['middleware' => ['auth','checkUserRole:admin,pedagang,sopir']],fun
 
 Route::group(['middleware' => ['auth','checkUserRole:pedagang']],function(){
   Route::get('/sop/{id}', 'PbController@sopir');
+  Route::get('/qrcode/{id}', 'PbController@qrcode');
 });
 
 Route::group(['middleware' => ['auth','checkUserRole:sopir']],function(){
   Route::get('/ped/{id}', 'SopirController@pb');
+  Route::get('/editPenyalur/{id}', 'SopirController@editPenyalur');
+  Route::post('/updatePenyalur/{id}/{nama}', 'SopirController@updatePenyalur');
 });
 //Auth::routes();
 
