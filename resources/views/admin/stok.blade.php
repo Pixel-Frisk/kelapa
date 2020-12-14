@@ -24,20 +24,20 @@ active
           <form action="/createStok" method="post">
             @csrf
             <div class="form-group">
-              <label for="tanggal">Tanggal</label>
+              <label for="tanggal">Tanggal Sortir</label>
               <input name="tanggal" type="date" class="form-control" id="tanggal" required>
             </div>
             <div class="form-group">
               <label for="name">Kelapa A</label>
-              <input name="keMasA" type="number" class="form-control" id="keMasA" placeholder="Kelapa Masuk" required>
+              <input name="keMasA" type="number" class="form-control" id="keMasA" placeholder="Kelapa Masuk" value="0" required>
             </div>
             <div class="form-group">
               <label for="name">Kelapa B</label>
-              <input name="keMasB" type="number" class="form-control" id="keMasB" placeholder="Kelapa Masuk" required>
+              <input name="keMasB" type="number" class="form-control" id="keMasB" placeholder="Kelapa Masuk" value="0" required>
             </div>
             <div class="form-group">
               <label for="name">Kelapa C</label>
-              <input name="keMasC" type="number" class="form-control" id="keMasC" placeholder="Kelapa Masuk" required>
+              <input name="keMasC" type="number" class="form-control" id="keMasC" placeholder="Kelapa Masuk" value="0" required>
             </div>
             <div class="modal-footer bg-whitesmoke br">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
@@ -80,12 +80,12 @@ active
             <div class="card-header">
               <h4>Data Stok</h4>
               <div class="card-header-action">
-                <form method="get" action="">
+                <form method="get" action="/searchStok">
                   <div class="input-group">
-                    <!-- <input name="cari" type="text" class="form-control" placeholder="Search">
+                    <input name="cari" type="date" class="form-control" placeholder="Search">
                     <div class="input-group-btn">
                       <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-                    </div> -->
+                    </div>
                     <button type="button" class="btn btn-primary float-right ml-1" data-toggle="modal" data-target="#exampleModal">
                       Add
                     </button>
@@ -166,6 +166,8 @@ active
                       @endif
                       <td>
                         <a href="/editStok/{{$stok->id}}" class="btn btn-secondary">Edit</a>
+                        <a href="/detailStok/{{$stok->id}}" class="btn btn-secondary">Detail</a>
+                        <!-- <a href="/deleteStok/{{$stok->id}}" class="btn btn-secondary" onclick="return confirm('apakah anda yakin ingin menghapusnya ?')">Delete</a> -->
                       </td>
                     </tr>
                     @endforeach

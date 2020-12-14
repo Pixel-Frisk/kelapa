@@ -13,7 +13,7 @@
       <div class="row mt-sm-4">
         <div class="col-12 col-md-12 col-lg-7">
           <div class="card">
-            <form action="/updateStok/{{$stok->id}}" method="post" class="needs-validation" novalidate="">
+            <form action="/updateStok/{{$stok->id}}" method="post">
               @csrf
               <div class="card-header">
                 <h4>Form Edit</h4>

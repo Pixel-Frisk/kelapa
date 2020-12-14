@@ -22,7 +22,7 @@
                   <div class="row">
                     <div class="form-group col-md-6 col-12">
                       <label>Nama</label>
-                      <input name="name" type="text" class="form-control" value="{{$users->name}}" required disabled>
+                      <input name="nama" type="text" class="form-control" value="{{$users->nama}}" required disabled>
                       <div class="invalid-feedback">
                         Tolong isi Nama
                       </div>
@@ -38,7 +38,7 @@
                   <div class="row">
                     <div class="form-group col-md-6 col-12">
                       <label>HP</label>
-                      <input name="hp" type="number" class="form-control" value="{{$users->hp}}" required disabled>
+                      <input name="hp" type="number" class="form-control" value="{{$users->noHP}}" required disabled>
                       <div class="invalid-feedback">
                         Tolong isi Nomer Telepon
                       </div>
@@ -68,6 +68,15 @@
                         Tolong isi Status
                       </div>
                     </div>
+                    @if($users->status == 'sopir')
+                    <div class="form-group col-md-6 col-12">
+                      <label>Gaji</label>
+                      <input name="gaji" type="number" class="form-control" value="{{$users->gaji}}" required disabled>
+                      <div class="invalid-feedback">
+                        Tolong isi Gaji
+                      </div>
+                    </div>
+                    @endif
                   </div>
               </div>
             </form>

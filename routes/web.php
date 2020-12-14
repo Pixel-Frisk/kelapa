@@ -68,6 +68,8 @@ Route::group(['middleware' => ['auth','checkUserRole:admin,pedagang,sopir']],fun
 Route::group(['middleware' => ['auth','checkUserRole:pedagang']],function(){
   Route::get('/sop/{id}', 'PbController@sopir');
   Route::get('/qrcode/{id}', 'PbController@qrcode');
+  Route::get('/sopi/{id}', 'PbController@sopi');
+  Route::get('/penj/{id}', 'PbController@penj');
 });
 
 Route::group(['middleware' => ['auth','checkUserRole:sopir']],function(){

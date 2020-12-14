@@ -97,7 +97,7 @@
             <div class="col-md-6 col-sm-6">
               <div class="input-group">
                 <p>Nama</p>
-                <input name="name" type="text" class="form-control" value="{{$users->name}}" disabled>
+                <input name="name" type="text" class="form-control" value="{{$users->nama}}" disabled>
               </div>
             </div>
 
@@ -124,7 +124,7 @@
             <div class="col-md-6 col-sm-6">
               <div class="input-group">
                 <p>HP</p>
-                <input name="hp" type="text" class="form-control" value="{{$users->hp}}" disabled>
+                <input name="hp" type="text" class="form-control" value="{{$users->noHP}}" disabled>
               </div>
             </div>
             <div class="col-md-12 col-sm-12">
@@ -182,7 +182,7 @@
             <div class="col-md-6 col-sm-6">
               <div class="input-group">
                 <p>Nama</p>
-                <input name="name" type="text" class="form-control" value="{{$users->name}}" disabled>
+                <input name="name" type="text" class="form-control" value="{{$users->nama}}" disabled>
               </div>
             </div>
 
@@ -209,7 +209,13 @@
             <div class="col-md-6 col-sm-6">
               <div class="input-group">
                 <p>HP</p>
-                <input name="hp" type="text" class="form-control" value="{{$users->hp}}" disabled>
+                <input name="hp" type="text" class="form-control" value="{{$users->noHP}}" disabled>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="input-group">
+                <p>Gaji</p>
+                <input name="gaji" type="text" class="form-control" value="{{$users->gaji}}" disabled>
               </div>
             </div>
             <div class="col-md-12 col-sm-12">

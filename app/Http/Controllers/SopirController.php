@@ -27,24 +27,26 @@ class SopirController extends Controller
                 ->join('users as us', 'p.id_pb', '=', 'us.id')
                 ->join('pb as pb', 'us.id', '=', 'pb.idUser')
                 ->join('kendaraan as k', 'p.id_kendaraan', '=', 'k.id')
-                ->join('penjualan as pen', 'p.id_penjualan', '=', 'pen.id')
+                ->join('pemasukan as pen', 'p.id_penjualan', '=', 'pen.id')
                 ->where([['users.id', '=', $id],['p.status', '=', 'sedang dalam perjalanan']])
                 ->orderBy('p.id', 'Desc')
                 ->select('p.tanggalKirim','p.tanggalTerima','k.id_kendaraan','us.nama', 'pb.noHP', 'pb.alamat','pen.namaItem','pen.quantity','pen.harga','pen.jenisPembayaran','pen.keterangan','p.status')
                 ->first();
     if($detail==null){
-      return redirect('/dashboard')->with('gagal', 'Tidak ada pengiriman');
+      return redirect('/dashboard')->with('gagal', 'Tidak ada penyaluran');
     } else {
       return view('sopir.pedagang', ['detail' => $detail]);
     }
   }
   public function editPenyalur($id){
     $penyaluran = Penyaluran::find($id);
+    // $days2 = date('Y-m-d', time() + (60 * 60 * 24 * 2));
+    // return dd('tanggal hari ini:',$days2);
     return view('sopir.updatePenyaluran',['penyaluran' => $penyaluran]);
   }
   public function updatePenyalur(Request $request, $id, $nama){
     $current = date('Y-m-d H:i:s');
-    $user = User::where('nama', '=', $nama)->first();
+    $user = User::where('id', '=', $nama)->first();
     $penyaluran = Penyaluran::find($id);
     if ($penyaluran->tanggalTerima >= $current) {
       if($penyaluran->id_sopir == $user->id){

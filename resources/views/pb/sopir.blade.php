@@ -27,54 +27,78 @@ class="active"
 <div class="row" responsive>
   <div class="col-md-12">
     <div class="mng-company-name">
-      <div class="col-md-3 col-sm-3">
-        <span class="cmp-time">Tanggal</span>
+      <div class="col-md-2 col-sm-2">
+        <span class="cmp-time">Tanggal Kirim</span>
       </div>
     </div>
     <div class="mng-company-name">
-      <div class="col-md-3 col-sm-3">
-        <span class="cmp-time">Nama Sopir</span>
+      <div class="col-md-2 col-sm-2">
+        <span class="cmp-time">Status</span>
       </div>
     </div>
     <div class=class="mng-company-name">
-      <div class="col-md-3 col-sm-3">
-        <span class="cmp-time">Nomor Hp</span>
+      <div class="col-md-2 col-sm-2">
+        <span class="cmp-time">Sopir</span>
+      </div>
+    </div>
+    <div class="mng-company-name">
+      <div class="col-md-2 col-sm-2">
+        <span class="cmp-time">ID Kendaraan</span>
       </div>
     </div>
     <div class=class="mng-company-name">
-      <div class="col-md-3 col-sm-3">
-        <span class="cmp-time">Alamat</span>
+      <div class="col-md-2 col-sm-2">
+        <span class="cmp-time">No Penjualan</span>
       </div>
     </div>
-    @foreach($users as $row)
+    <div class=class="mng-company-name">
+      <div class="col-md-2 col-sm-2">
+        <span class="cmp-time">Qr Code</span>
+      </div>
+    </div>
     <article>
+      @foreach($users as $row)
       <div class="mng-company">
-        <div class="col-md-3 col-sm-3">
+        <div class="col-md-2 col-sm-2">
           <div class="mng-company-name">
-            <span class="cmp-time">{{$row->created_at}}</span>
+            <span class="cmp-time">{{$row->tanggalKirim}}</span>
           </div>
         </div>
-        <div class="col-md-3 col-sm-3">
+        <div class="col-md-2 col-sm-2">
           <div class="mng-company-name">
-            <span class="cmp-time">{{$row->name}}</span>
+            <span class="cmp-time">{{$row->status}}</span>
           </div>
         </div>
-        <div class="col-md-3 col-sm-3">
+        <div class="col-md-2 col-sm-2">
+          <a href="/sopi/{{$row->nama}}">
           <div class="mng-company-name">
-            <span class="cmp-time">{{$row->hp}}</span>
+            <span class="cmp-time">{{$row->nama}}</span>
+          </div>
+          </a>
+        </div>
+        <div class="col-md-2 col-sm-2">
+          <div class="mng-company-name">
+            <span class="cmp-time">{{$row->id_kendaraan}}</span>
           </div>
         </div>
-        <div class="col-md-3 col-sm-3">
+        <div class="col-md-2 col-sm-2">
+          <a href="/penj/{{$row->id_penjualan}}">
           <div class="mng-company-name">
-            <span class="cmp-time">{{$row->alamat}}</span>
+            <span class="cmp-time">{{$row->id_penjualan}}</span>
+          </div>
+          </a>
+        </div>
+        <div class="col-md-2 col-sm-2">
+          <div class="brows-job-link">
+            <a href="/qrcode/{{$row->id}}" class="btn btn-default">QR Code</a>
           </div>
         </div>
       </div>
+      @endforeach
       <div class="detail-pannel-footer-btn pull-right">
         <a href="{{ url('/dashboard')}}" class="footer-btn choose-cover">kembali ke dashboard</a>
       </div>
     </article>
-    @endforeach
   </div>
 </div>
 </section>

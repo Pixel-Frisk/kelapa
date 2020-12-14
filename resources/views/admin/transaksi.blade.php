@@ -24,14 +24,14 @@ active
             @csrf
             <div class="form-group">
               <label for="name">Faktur</label>
-              <button type="button" class="btn btn-primary ml-1" data-toggle="modal" data-target="#penjualanModal">
-                Penjualan
+              <button type="button" class="btn btn-primary ml-1" data-toggle="modal" data-target="#pemasukanModal">
+                Pemasukan
               </button>
             </div>
             <div class="form-group">
               <label for="name">Faktur</label>
-              <button type="button" class="btn btn-primary ml-1" data-toggle="modal" data-target="#pembelianModal">
-                Pembelian
+              <button type="button" class="btn btn-primary ml-1" data-toggle="modal" data-target="#pengeluaranModal">
+                Pengeluaran
               </button>
             </div>
             <div class="modal-footer bg-whitesmoke br">
@@ -42,7 +42,7 @@ active
       </div>
     </div>
   </div>
-  <div class="modal fade Top" id="penjualanModal" tabindex="-1" role="dialog" aria-labelledby="penjualanModal" aria-hidden="true">
+  <div class="modal fade Top" id="pemasukanModal" tabindex="-1" role="dialog" aria-labelledby="pemasukanModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -52,8 +52,9 @@ active
           </button> -->
         </div>
         <div class="modal-body">
-          <form action="/penjualan/create" method="post">
+          <form action="/createTransaksi" method="post">
             @csrf
+            <input name="faktur" type="text" value="Pemasukan" hidden>
             <div class="form-group">
               <label for="tanggal">Tanggal</label>
               <input name="tanggal" type="date" class="form-control" id="tanggalt" required>
@@ -93,7 +94,7 @@ active
               </select>
             </div>
             <div class="form-group">
-              <label for="keterangan">Keterangan</label>
+              <label for="keterangan">Status</label>
               <input name="keterangan" type="text" class="form-control" id="keterangan" required>
             </div>
             <div class="modal-footer bg-whitesmoke br">
@@ -105,7 +106,7 @@ active
       </div>
     </div>
   </div>
-  <div class="modal fade Top" id="pembelianModal" tabindex="-1" role="dialog" aria-labelledby="pembelianModal" aria-hidden="true">
+  <div class="modal fade Top" id="pengeluaranModal" tabindex="-1" role="dialog" aria-labelledby="pengeluaranModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -115,8 +116,9 @@ active
           </button> -->
         </div>
         <div class="modal-body">
-          <form action="/pembelian/create" method="post">
+          <form action="/createTransaksi" method="post">
             @csrf
+            <input name="faktur" type="text" value="Pengeluaran" hidden>
             <div class="form-group">
               <label for="tanggal">Tanggal</label>
               <input name="tanggal" type="date" class="form-control" id="tanggal" required>
@@ -148,7 +150,7 @@ active
               <input name="harga" type="number" class="form-control" id="harga" required>
             </div>
             <div class="form-group">
-              <label for="keterangan">Keterangan</label>
+              <label for="keterangan">Status</label>
               <input name="keterangan" type="text" class="form-control" id="keterangan" required>
             </div>
             <div class="modal-footer bg-whitesmoke br">
@@ -192,15 +194,16 @@ active
             <div class="card-header">
               <h4>Data Transaksi</h4>
               <div class="card-header-action">
-                <form method="get" action="">
+                <form method="get" action="/searchTransaksi">
                   <div class="input-group">
-                    <!-- <input name="cari" type="text" class="form-control" placeholder="Search">
+                    <input name="cari" type="date" class="form-control" placeholder="Search">
                     <div class="input-group-btn">
                       <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-                    </div> -->
+                    </div>
                     <button type="button" class="btn btn-primary float-right ml-1" data-toggle="modal" data-target="#transaksiModal">
                       Add
                     </button>
+                    <a href="/rekap" type="button" class="btn btn-primary float-right ml-1">Laporan</a>
                   </div>
                 </form>
               </div>
@@ -216,33 +219,40 @@ active
                       <th>Nama Item</th>
                       <th>Debit</th>
                       <th>Kredit</th>
+                      <th>Saldo</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($penjualan as $key => $penjualan)
+                    @foreach ($pemasukan as $key => $pemasukan)
                     <tr>
-                      <td>{{$penjualan->tanggal}}</td>
-                      <td>Penjualan</td>
-                      <td>{{$penjualan->id}}</td>
-                      <td>{{$penjualan->namaItem}}</td>
-                      <td>{{$penjualan->harga}}</td>
+                      <td>{{$pemasukan->tanggal}}</td>
+                      <td>Pemasukan</td>
+                      <td>{{$pemasukan->id}}</td>
+                      <td>{{$pemasukan->namaItem}}</td>
+                      <td>{{$pemasukan->harga}}</td>
                       <td>-</td>
+                      <td>{{$pemasukan->saldo}}</td>
                       <td>
-                      <a href="/editPenjualan/{{$penjualan->id}}" class="btn btn-secondary">Edit</a>
+                      <a href="/editTransaksi/{{$pemasukan->idTransaksi}}" class="btn btn-secondary">Edit</a>
+                      <a href="/detailTransaksi/{{$pemasukan->idTransaksi}}" class="btn btn-secondary">Detail</a>
+                      <a href="/deleteTransaksi/{{$pemasukan->idTransaksi}}" class="btn btn-secondary" onclick="return confirm('apakah anda yakin ingin menghapusnya ?')">Delete</a>
                       </td>
                     </tr>
                     @endforeach
-                    @foreach ($pembelian as $key => $pembelian)
+                    @foreach ($pengeluaran as $key => $pengeluaran)
                     <tr>
-                      <td>{{$pembelian->tanggal}}</td>
-                      <td>Pembelian</td>
-                      <td>{{$pembelian->id}}</td>
-                      <td>{{$pembelian->namaItem}}</td>
+                      <td>{{$pengeluaran->tanggal}}</td>
+                      <td>Pengeluaran</td>
+                      <td>{{$pengeluaran->id}}</td>
+                      <td>{{$pengeluaran->namaItem}}</td>
                       <td>-</td>
-                      <td>{{$pembelian->harga}}</td>
+                      <td>{{$pengeluaran->harga}}</td>
+                      <td>{{$pengeluaran->saldo}}</td>
                       <td>
-                      <a href="/editPembelian/{{$pembelian->id}}" class="btn btn-secondary">Edit</a>
+                      <a href="/editTransaksi/{{$pengeluaran->idTransaksi}}" class="btn btn-secondary">Edit</a>
+                      <a href="/detailTransaksi/{{$pengeluaran->idTransaksi}}" class="btn btn-secondary">Detail</a>
+                      <a href="/deleteTransaksi/{{$pengeluaran->idTransaksi}}" class="btn btn-secondary" onclick="return confirm('apakah anda yakin ingin menghapusnya ?')">Delete</a>
                       </td>
                     </tr>
                     @endforeach

@@ -661,7 +661,7 @@ class AdminController extends Controller
     // $penyaluran = Penyaluran::find($id);
     $penyaluran = Penyaluran::join('kendaraan as k', 'penyaluran.id_kendaraan', '=', 'k.id')
                             ->where('penyaluran.id', '=', $id)
-                            ->select('penyaluran.id', 'penyaluran.tanggalKirim', 'penyaluran.tanggalTerima', 'k.id_kendaraan', 'penyaluran.id_sopir', 'penyaluran.id_pb', 'penyaluran.id_penjualan', 'penyaluran.status')
+                            ->select('penyaluran.id', 'penyaluran.tanggalKirim', 'penyaluran.tanggalTerima', 'k.id_kendaraan', 'penyaluran.id_sopir', 'penyaluran.id_pb', 'penyaluran.id_penjualan', 'penyaluran.status', 'penyaluran.kendala')
                             ->first();
     $user = User::get();
     return view('admin.editPenyaluran', ['penyaluran' => $penyaluran], ['user' => $user]);
@@ -671,7 +671,7 @@ class AdminController extends Controller
     $kendaraan = Kendaraan::where('id_kendaraan', '=', $request->id_kendaraan)->first();
     $pemasukan = Pemasukan::where('id', '=' , $request->id_penjualan)->first();
     if ($pemasukan->namaItem == "Kelapa A") {
-      $penyaluran= penyaluran::find($id);
+      $penyaluran= Penyaluran::find($id);
       $penyaluran->tanggalKirim = $request->tanggalKirim;
       $penyaluran->tanggalTerima = $request->tanggalTerima;
       $penyaluran->id_sopir = $request->id_sopir;
@@ -683,7 +683,7 @@ class AdminController extends Controller
       $penyaluran->save();
       return redirect('/penyaluran')->with('status', 'Data berhasil diperbaharui');
     } elseif ($pemasukan->namaItem == "Kelapa B") {
-      $penyaluran= penyaluran::find($id);
+      $penyaluran= Penyaluran::find($id);
       $penyaluran->tanggalKirim = $request->tanggalKirim;
       $penyaluran->tanggalTerima = $request->tanggalTerima;
       $penyaluran->id_sopir = $request->id_sopir;
@@ -695,7 +695,7 @@ class AdminController extends Controller
       $penyaluran->save();
       return redirect('/penyaluran')->with('status', 'Data berhasil diperbaharui');
     } elseif ($pemasukan->namaItem == "Kelapa C") {
-      $penyaluran= penyaluran::find($id);
+      $penyaluran= Penyaluran::find($id);
       $penyaluran->tanggalKirim = $request->tanggalKirim;
       $penyaluran->tanggalTerima = $request->tanggalTerima;
       $penyaluran->id_sopir = $request->id_sopir;
@@ -723,12 +723,12 @@ class AdminController extends Controller
     $pengeluaran = Transaksi::join('pengeluaran as p', 'transaksi.id', '=', 'p.idTransaksi')
                             ->whereMonth('p.tanggal', $bulan)
                             ->whereYear('p.tanggal', $tahun)
-                            ->select('p.tanggal', 'transaksi.faktur', 'p.harga', 'transaksi.saldo')
+                            ->select('p.tanggal', 'transaksi.faktur', 'p.namaItem', 'p.quantity', 'p.harga', 'transaksi.saldo')
                             ->get();
     $pemasukan = Transaksi::join('pemasukan as p', 'transaksi.id', '=', 'p.idTransaksi')
                             ->whereMonth('p.tanggal', $bulan)
                             ->whereYear('p.tanggal', $tahun)
-                            ->select('p.tanggal', 'transaksi.faktur', 'p.harga', 'transaksi.saldo')
+                            ->select('p.tanggal', 'transaksi.faktur', 'p.namaItem', 'p.quantity', 'p.harga', 'transaksi.saldo')
                             ->get();
     return view('admin.rekap', ['pengeluaran' => $pengeluaran], ['pemasukan' => $pemasukan]);
   }
@@ -739,15 +739,15 @@ class AdminController extends Controller
     $pengeluaran = Transaksi::join('pengeluaran as p', 'transaksi.id', '=', 'p.idTransaksi')
                             ->whereMonth('p.tanggal', $bulan)
                             ->whereYear('p.tanggal', $tahun)
-                            ->select('p.tanggal', 'transaksi.faktur', 'p.harga', 'transaksi.saldo')
+                            ->select('p.tanggal', 'transaksi.faktur', 'p.namaItem', 'p.quantity', 'p.harga', 'transaksi.saldo')
                             ->get();
     $pemasukan = Transaksi::join('pemasukan as p', 'transaksi.id', '=', 'p.idTransaksi')
                             ->whereMonth('p.tanggal', $bulan)
                             ->whereYear('p.tanggal', $tahun)
-                            ->select('p.tanggal', 'transaksi.faktur', 'p.harga', 'transaksi.saldo')
+                            ->select('p.tanggal', 'transaksi.faktur', 'p.namaItem', 'p.quantity', 'p.harga', 'transaksi.saldo')
                             ->get();
 
   	$pdf = PDF::loadview('admin.rekapPDF',['pengeluaran' => $pengeluaran], ['pemasukan' => $pemasukan]);
-  	return $pdf->download('rekap.pdf');
+  	return $pdf->download('Rekap Bulan '.$bulan.'-'.$tahun.'.pdf');
   }
 }

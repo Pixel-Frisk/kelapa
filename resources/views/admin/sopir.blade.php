@@ -28,8 +28,8 @@ class="active"
           <form action="/users/createSopir" method="post">
             @csrf
             <div class="form-group">
-              <label for="name">Nama</label>
-              <input name="name" type="text" class="form-control" id="name">
+              <label for="nama">Nama</label>
+              <input name="nama" type="text" class="form-control" id="nama">
             </div>
             <div class="form-group">
               <label for="email">Username</label>
@@ -105,6 +105,7 @@ class="active"
                       <th>Username</th>
                       <th>Hp</th>
                       <th>Alamat</th>
+                      <th>Gaji</th>
                       <th>Status Aktif</th>
                       <th>Action</th>
                     </tr>
@@ -112,10 +113,11 @@ class="active"
                   <tbody>
                     @foreach ($data_users as $users)
                     <tr>
-                      <td>{{$users->name}}</td>
+                      <td>{{$users->nama}}</td>
                       <td>{{$users->email}}</td>
-                      <td>{{$users->hp}}</td>
+                      <td>{{$users->noHP}}</td>
                       <td>{{$users->alamat}}</td>
+                      <td>{{$users->gaji}}</td>
                       <td>{{$users->statusAcc}}</td>
                       <td><a href="/users/{{$users->id}}/detail" class="btn btn-primary">detail</a>
                       <a href="/users/{{$users->id}}/edit" class="btn btn-secondary">edit</a>

@@ -13,7 +13,7 @@
       <div class="row mt-sm-4">
         <div class="col-12 col-md-12 col-lg-7">
           <div class="card">
-            <form action="/users/{{$users->id}}/update" method="post" class="needs-validation" novalidate="">
+            <form action="/users/{{$users->id}}/update" method="post">
               @csrf
               <div class="card-header">
                 <h4>Form Edit</h4>
@@ -22,7 +22,7 @@
                   <div class="row">
                     <div class="form-group col-md-6 col-12">
                       <label>Nama</label>
-                      <input name="name" type="text" class="form-control" value="{{$users->name}}" required>
+                      <input name="nama" type="text" class="form-control" value="{{$users->nama}}" required>
                       <div class="invalid-feedback">
                         Tolong isi Nama
                       </div>
@@ -38,7 +38,7 @@
                   <div class="row">
                     <div class="form-group col-md-6 col-12">
                       <label>HP</label>
-                      <input name="hp" type="number" class="form-control" value="{{$users->hp}}" required>
+                      <input name="hp" type="number" class="form-control" value="{{$users->noHP}}" required>
                       <div class="invalid-feedback">
                         Tolong isi Nomer Telepon
                       </div>
@@ -68,6 +68,15 @@
                         Tolong isi Status
                       </div>
                     </div>
+                    @if($users->status == 'sopir')
+                    <div class="form-group col-md-6 col-12">
+                      <label>Gaji</label>
+                      <input name="gaji" type="number" class="form-control" value="{{$users->gaji}}" required>
+                      <div class="invalid-feedback">
+                        Tolong isi Gaji
+                      </div>
+                    </div>
+                    @endif
                   </div>
               </div>
               <div class="card-footer text-right">

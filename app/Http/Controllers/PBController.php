@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\User;
 use App\Penyaluran;
+use App\Pemasukan;
 
 class PbController extends Controller
 {
@@ -31,6 +32,19 @@ class PbController extends Controller
                 ->select('p.id','p.tanggalKirim','k.id_kendaraan', 'us.nama', 'p.id_penjualan', 'p.status')
                 ->get();
     return view('pb.sopir', ['users' => $user]);
+  }
+
+  public function sopi($id){
+    $user = User::join('sopir as s', 'users.id', '=', 's.idUser')
+                ->where('users.nama', '=', $id)
+                ->select('users.nama','s.noHP', 's.alamat')
+                ->first();
+    return view('pb.sopi', ['user' => $user]);
+  }
+
+  public function penj($id){
+    $penjualan = Pemasukan::find($id);
+    return view('pb.penj', ['penjualan' => $penjualan]);
   }
 
   public function qrcode($id){

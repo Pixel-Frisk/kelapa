@@ -35,7 +35,7 @@
           </form>
           <ul class="navbar-nav navbar-right">
             <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-              <div class="d-sm-none d-lg-inline-block">Hi, {{auth()->user()->name}}</div></a>
+              <div class="d-sm-none d-lg-inline-block">Hi, {{auth()->user()->nama}}</div></a>
               <div class="dropdown-menu dropdown-menu-right">
                 <!-- <a href="/profile/{{auth()->user()->id}}" class="dropdown-item has-icon">
                   <i class="far fa-user"></i> Profile
@@ -65,7 +65,9 @@
                     <li @yield('active2')><a href="{{ url('/sopir')}}">Sopir</a></li>
                   </ul>
                 </li>
+                <li class="@yield('truck')"><a class="nav-link" href="{{ url('/kendaraan')}}"><i class="fas fa-columns"></i> <span>Kendaraan</span></a></li>
                 <li class="@yield('transaksi')"><a class="nav-link" href="{{ url('/transaksi')}}"><i class="fas fa-pencil-ruler"></i> <span>Transaksi</span></a></li>
+                <li class="@yield('penyaluran')"><a class="nav-link" href="{{ url('/penyaluran')}}"><i class="far fa-file-alt"></i> <span>Penyaluran</span></a></li>
                 <li class="@yield('stok')"><a class="nav-link" href="{{ url('/stok')}}"><i class="fas fa-ellipsis-h"></i> <span>Stok</span></a></li>
               </ul>
             </aside>

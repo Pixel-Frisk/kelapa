@@ -28,8 +28,8 @@ class="active"
           <form action="/users/createPB" method="post">
             @csrf
             <div class="form-group">
-              <label for="name">Nama</label>
-              <input name="name" type="text" class="form-control" id="name" required>
+              <label for="nama">Nama</label>
+              <input name="nama" type="text" class="form-control" id="nama" required>
             </div>
             <div class="form-group">
               <label for="email">Username</label>
@@ -112,9 +112,9 @@ class="active"
                   <tbody>
                     @foreach ($data_users as $users)
                     <tr>
-                      <td>{{$users->name}}</td>
+                      <td>{{$users->nama}}</td>
                       <td>{{$users->email}}</td>
-                      <td>{{$users->hp}}</td>
+                      <td>{{$users->noHP}}</td>
                       <td>{{$users->alamat}}</td>
                       <td>{{$users->statusAcc}}</td>
                       <td><a href="/users/{{$users->id}}/detail" class="btn btn-primary">detail</a>

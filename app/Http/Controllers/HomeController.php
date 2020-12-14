@@ -35,8 +35,8 @@ class HomeController extends Controller
       return view('dashboard', ['penyaluran' => $penyaluran]);
     }
 
-    public function profile($id){
-      $user = User::find($id);
-      return view('profile', ['users' => $user]);
-    }
+    // public function profile($id){
+    //   $user = User::find($id);
+    //   return view('profile', ['users' => $user]);
+    // }
 }
