@@ -204,13 +204,18 @@ class AdminController extends Controller
   public function deleteTransaksi($id){
     $trans = Transaksi::find($id);
     if($trans->faktur == "Pengeluaran"){
-      $pengeluaran = Pengeluaran::where('idTransaksi', '=', $id);
+      $pengeluaran = Pengeluaran::where('idTransaksi', '=', $id)->first();
       $pengeluaran->delete($pengeluaran);
       $transaksi = Transaksi::find($id);
       $transaksi->delete($transaksi);
       return redirect('/transaksi')->with('status', 'Data Berhasil Dihapus');
     }elseif($trans->faktur == "Pemasukan"){
-      $pemasukan = Pemasukan::where('idTransaksi', '=', $id);
+      $pemasukan = Pemasukan::where('idTransaksi', '=', $id)->first();
+      $idPen = $pemasukan->id;
+      $penyaluran = Penyaluran::where('id_penjualan', '=', $idPen)->first();
+      if($penyaluran != null){
+        $penyaluran->delete($penyaluran);
+      }
       $pemasukan->delete($pemasukan);
       $transaksi = Transaksi::find($id);
       $transaksi->delete($transaksi);
@@ -539,11 +544,11 @@ class AdminController extends Controller
     return redirect('/stok')->with('status', 'Data perubahan telah disimpan');
   }
 
-  public function deleteStok($id){
-    $stok = stok::find($id);
-    $stok->delete($stok);
-    return redirect('/stok')->with('status', 'Data Berhasil Dihapus');
-  }
+  // public function deleteStok($id){
+  //   $stok = stok::find($id);
+  //   $stok->delete($stok);
+  //   return redirect('/stok')->with('status', 'Data Berhasil Dihapus');
+  // }
 
   // Method untuk Sprint 3
 
@@ -720,6 +725,22 @@ class AdminController extends Controller
   public function rekap(){
     $bulan = date('m');
     $tahun = date('Y');
+    $pengeluaran = Transaksi::join('pengeluaran as p', 'transaksi.id', '=', 'p.idTransaksi')
+                            ->whereMonth('p.tanggal', $bulan)
+                            ->whereYear('p.tanggal', $tahun)
+                            ->select('p.tanggal', 'transaksi.faktur', 'p.namaItem', 'p.quantity', 'p.harga', 'transaksi.saldo')
+                            ->get();
+    $pemasukan = Transaksi::join('pemasukan as p', 'transaksi.id', '=', 'p.idTransaksi')
+                            ->whereMonth('p.tanggal', $bulan)
+                            ->whereYear('p.tanggal', $tahun)
+                            ->select('p.tanggal', 'transaksi.faktur', 'p.namaItem', 'p.quantity', 'p.harga', 'transaksi.saldo')
+                            ->get();
+    return view('admin.rekap', ['pengeluaran' => $pengeluaran], ['pemasukan' => $pemasukan], $bulan, $tahun);
+  }
+
+  public function rekapSearch(Request $request){
+    $bulan = $request->bulan;
+    $tahun = $request->tahun;
     $pengeluaran = Transaksi::join('pengeluaran as p', 'transaksi.id', '=', 'p.idTransaksi')
                             ->whereMonth('p.tanggal', $bulan)
                             ->whereYear('p.tanggal', $tahun)

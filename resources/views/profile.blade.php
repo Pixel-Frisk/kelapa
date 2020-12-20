@@ -81,16 +81,10 @@
   <div class="detail-desc section">
     <div class="container">
       <div class="ur-detail-wrap create-kit padd-bot-0">
-
-        <div class="row">
-          <div class="detail-pic js">
-            <div class="box">
-              <input type="file" name="upload-pic[]" id="upload-pic" class="inputfile" disabled/>
-              <label for="upload-pic"><i class="fa fa-upload" aria-hidden="true"></i><span></span></label>
-            </div>
-          </div>
+        <div>
+          <br>
+          <br>
         </div>
-
         <div class="row bottom-mrg">
           <form class="add-feild">
 
@@ -166,16 +160,10 @@
   <div class="detail-desc section">
     <div class="container">
       <div class="ur-detail-wrap create-kit padd-bot-0">
-
-        <div class="row">
-          <div class="detail-pic js">
-            <div class="box">
-              <input type="file" name="upload-pic[]" id="upload-pic" class="inputfile" disabled/>
-              <label for="upload-pic"><i class="fa fa-upload" aria-hidden="true"></i><span></span></label>
-            </div>
-          </div>
+        <div>
+          <br>
+          <br>
         </div>
-
         <div class="row bottom-mrg">
           <form class="add-feild">
 

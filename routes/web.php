@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth','checkUserRole:admin']],function(){
   Route::get('/detailTransaksi/{id}', 'AdminController@detailTransaksi');
   Route::get('/deleteTransaksi/{id}', 'AdminController@deleteTransaksi');
   Route::get('/rekap', 'AdminController@rekap');
+  Route::post('/rekap', 'AdminController@rekapSearch');
   Route::get('/cetakPDF', 'AdminController@cetakPDF');
   // Route::get('/deletePenjualan/{id}', 'AdminController@deletePenjualan');
   // Route::get('/deletePembelian/{id}', 'AdminController@deletePembelian');
