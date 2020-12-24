@@ -9,6 +9,7 @@
     ></script>
     <link rel="stylesheet" href="{{asset('admin/assets/css/style1.css')}}"/>
     <title>Login</title>
+    <link rel="shortcut icon" href="{{asset('images/icon.png')}}" type="image/x-icon">
   </head>
   <body>
     <div class="container">

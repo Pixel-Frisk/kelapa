@@ -2,6 +2,7 @@
   <head>
       <!-- Basic Page Needs==================================================-->
       <title>Landing Page</title>
+      <link rel="shortcut icon" href="{{asset('images/icon.png')}}" type="image/x-icon">
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
       <!-- CSS==================================================-->
@@ -15,6 +16,7 @@
           <div class="container">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"><i class="fa fa-bars"></i></button>
               <div class="navbar-header">
+                  <img src="{{asset('images/Logo.png')}}" height="80" width="240" class="logo logo-display" alt=""><img src="{{asset('images/Logo.png')}}" height="80" width="240" class="logo logo-scrolled" alt="">
               </div>
               <div class="collapse navbar-collapse" id="navbar-menu">
                   <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">

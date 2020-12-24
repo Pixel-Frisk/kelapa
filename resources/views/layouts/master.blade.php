@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     @yield('judul')
+    <link rel="shortcut icon" href="{{asset('images/icon.png')}}" type="image/x-icon">
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -51,12 +52,12 @@
         <div class="main-sidebar">
           <aside id="sidebar-wrapper">
             <div class="sidebar-brand">
-              <a href="/dashboard">SIIPAKA</a>
+              <a href="/dashboard"><img src="{{asset('images/Logo.png')}}" height="45" width="135"></a>
             </div>
             <div class="sidebar-brand sidebar-brand-sm">
               <a>SPK</a>
             </div>
-            <ul class="sidebar-menu">
+            <ul class="sidebar-menu mt-2">
               <li class="menu-header">Dashboard</li>
                 <li class="nav-item dropdown @yield('drop')">
                   <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Users</span></a>
@@ -118,6 +119,7 @@
   <head>
       <!-- Basic Page Needs==================================================-->
       @yield('judul')
+      <link rel="shortcut icon" href="{{asset('images/icon.png')}}" type="image/x-icon">
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
       <!-- CSS==================================================-->
@@ -131,6 +133,7 @@
             <div class="container">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"><i class="fa fa-bars"></i></button>
                 <div class="navbar-header">
+                    <img src="{{asset('images/Logo.png')}}" height="80" width="240" class="logo logo-display" alt=""><img src="{{asset('images/Logo.png')}}" height="80" width="240" class="logo logo-scrolled" alt="">
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
@@ -203,6 +206,7 @@
   <head>
       <!-- Basic Page Needs==================================================-->
       @yield('judul')
+      <link rel="shortcut icon" href="{{asset('images/icon.png')}}" type="image/x-icon">
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
       <!-- CSS==================================================-->
@@ -216,6 +220,7 @@
           <div class="container">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"><i class="fa fa-bars"></i></button>
               <div class="navbar-header">
+                  <img src="{{asset('images/Logo.png')}}" height="80" width="240" class="logo logo-display" alt=""><img src="{{asset('images/Logo.png')}}" height="80" width="240" class="logo logo-scrolled" alt="">
               </div>
               <div class="collapse navbar-collapse" id="navbar-menu">
                   <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
